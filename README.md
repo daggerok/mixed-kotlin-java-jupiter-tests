@@ -18,13 +18,13 @@ My JUnit 5 Jupiter investigation process of problem how to successfully run JUni
 src/
   test/
     java/
-      **/*KotlinJUnit4VintageTest.kt  -
+      **/*KotlinJUnit4VintageTest.kt  +
       **/*KotlinJUnit5JupiterTest.kt  +
-      **/*JavaJUnit4VintageTest.java  -
+      **/*JavaJUnit4VintageTest.java  +
       **/*JavaJUnit5JupiterTest.java  +
     kotlin/
       **/*JavaJUnit4VintageTest.java  -
       **/*JavaJUnit5JupiterTest.java  -
-      **/*KotlinJUnit4VintageTest.kt  -
+      **/*KotlinJUnit4VintageTest.kt  +
       **/*KotlinJUnit5JupiterTest.kt  +
 ```

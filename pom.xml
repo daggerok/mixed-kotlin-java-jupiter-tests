@@ -21,8 +21,6 @@
 
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-    <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
-    <maven-source-plugin.version>3.1.0</maven-source-plugin.version>
   </properties>
 
   <dependencies>
@@ -32,37 +30,58 @@
       <version>${kotlin.version}</version>
     </dependency>
 
-    <!-- junit 5 jupiter maven requires -->
-    <dependency>
+    <!-- junit 4 -->
+    <dependency><!-- already contains junit:4.12 dependency, so we are not going to add it explicitly! -->
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test-junit</artifactId>
+      <version>${kotlin.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency><!-- vintage engine is required if you wanna execute JUnit 4 together with JUnit 3 Jupiter tests... -->
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- junit 5 -->
+    <dependency><!-- contains: junit-jupiter-api:5.0.0 and junit-jupiter-engine:5.2.0, but we want latest versions! -->
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit5</artifactId>
       <version>${kotlin.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
+    <dependency><!-- required to avoid java.lang.NoClassDefFoundError: org/junit/jupiter/api/parallel/ExecutionMode -->
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
+    <dependency><!-- w/o this only JUnit 4 tests going to be executed! -->
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+    <!--
+      seems like in this particular pom.xml configuration case junit-platform-launcher dependency is not needed anymore,
+      but I will left it as is, just in case if that example won't work in future with any other versions combinations
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
       <version>${junit-platform.version}</version>
       <scope>test</scope>
     </dependency>
+    -->
+    <!--
+      Same here, but according to my previous experience in case with different dependencies versions combination
+      my maven build didn't work without that dependency. So let's keep it also as a reference... just in case!
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-commons</artifactId>
       <version>${junit-platform.version}</version>
       <scope>test</scope>
     </dependency>
+    -->
   </dependencies>
 
   <build>
@@ -136,7 +155,7 @@
         </executions>
       </plugin>
 
-      <plugin><!-- w/o this SrcTestJavaJunit5JupiterJavaTest aren't executed -->
+      <plugin><!-- w/o this declaration JUnit 5 Jupiter tests aren't going to be executed, only JUnit 4 with no colored output! -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-plugin.version}</version>
