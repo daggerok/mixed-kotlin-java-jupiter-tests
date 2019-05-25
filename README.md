@@ -19,12 +19,12 @@ src/
   test/
     java/
       **/*KotlinJUnit4VintageTest.kt  +
-      **/*KotlinJUnit5JupiterTest.kt  +
       **/*JavaJUnit4VintageTest.java  +
+      **/*KotlinJUnit5JupiterTest.kt  +
       **/*JavaJUnit5JupiterTest.java  +
     kotlin/
       **/*JavaJUnit4VintageTest.java  -
-      **/*JavaJUnit5JupiterTest.java  -
       **/*KotlinJUnit4VintageTest.kt  +
+      **/*JavaJUnit5JupiterTest.java  -
       **/*KotlinJUnit5JupiterTest.kt  +
 ```
