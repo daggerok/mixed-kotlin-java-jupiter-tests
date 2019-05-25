@@ -7,7 +7,12 @@
   <groupId>com.github.daggerok</groupId>
   <artifactId>mixed-kotlin-java-jupiter-tests</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>module-1</module>
+    <module>module-2</module>
+  </modules>
 
   <properties>
     <java.version>1.8</java.version>
