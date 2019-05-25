@@ -7,7 +7,12 @@
   <groupId>com.github.daggerok</groupId>
   <artifactId>mixed-kotlin-java-jupiter-tests</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>module-1</module>
+    <module>module-2</module>
+  </modules>
 
   <properties>
     <java.version>1.8</java.version>
@@ -43,6 +48,7 @@
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
     <!-- junit 5 -->
     <dependency><!-- contains: junit-jupiter-api:5.0.0 and junit-jupiter-engine:5.2.0, but we want latest versions! -->
       <groupId>org.jetbrains.kotlin</groupId>
@@ -62,6 +68,8 @@
       <version>${junit-jupiter.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- optionals -->
     <!--
       seems like in this particular pom.xml configuration case junit-platform-launcher dependency is not needed anymore,
       but I will left it as is, just in case if that example won't work in future with any other versions combinations
